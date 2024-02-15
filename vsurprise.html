@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yes or No</title>
+    <style>
+      body {
+        background-color: #ffffe4;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      .celebration {
+        display: none;
+        font-size: 24px;
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Will you be my valentines?</h1>
+    <img src="smile.jpg" style="width: 200px" />
+    <button id="yesButton">Yes</button>
+    <button id="noButton">No</button>
+    <div class="celebration" id="celebrationMessage">Yay! You chose Yes!</div>
+    <img
+      id="dance"
+      src="dance.gif"
+      style="display: none; width: 200px; justify-content: center"
+    />
+
+    <script>
+      const yesButton = document.getElementById("yesButton");
+      const noButton = document.getElementById("noButton");
+      const celebrationMessage = document.getElementById("celebrationMessage");
+      const danceGif = document.getElementById("dance");
+
+      yesButton.addEventListener("click", function () {
+        celebrationMessage.style.display = "block";
+        danceGif.style.display = "flex";
+        noButton.style.display = "none";
+      });
+
+      noButton.addEventListener("click", function () {
+        const maxX = window.innerWidth - noButton.offsetWidth;
+        const maxY = window.innerHeight - noButton.offsetHeight;
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+
+        yesButton.style.fontSize =
+          parseInt(window.getComputedStyle(yesButton).fontSize) + 10 + "px";
+
+        noButton.style.position = "absolute";
+        noButton.style.left = randomX + "px";
+        noButton.style.top = randomY + "px";
+      });
+    </script>
+  </body>
+</html>
